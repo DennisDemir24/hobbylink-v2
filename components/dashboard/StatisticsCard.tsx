@@ -43,60 +43,60 @@ function StatCard({
   const TrendIcon = trend?.isPositive ? TrendingUp : TrendingDown
   
   return (
-    <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${className || ''}`}>
-      {/* Subtle gradient overlay */}
-      <div className='absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-purple-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+    <Card className={`group relative overflow-hidden border border-gray-200/60 dark:border-gray-700/60 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2 hover:border-blue-300/50 dark:hover:border-blue-600/50 ${className || ''}`}>
+      {/* Enhanced gradient overlay */}
+      <div className='absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-purple-500/[0.02] to-pink-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
       
-      <CardContent className='relative p-6'>
-        <div className='flex items-start justify-between mb-4'>
+      <CardContent className='relative p-7'>
+        <div className='flex items-start justify-between mb-6'>
           <div className='flex-1'>
-            <div className='flex items-center gap-3 mb-3'>
-              <h3 className='text-sm font-medium text-gray-600 dark:text-gray-400 tracking-wide'>
+            <div className='flex items-center gap-3 mb-4'>
+              <h3 className='text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide uppercase'>
                 {title}
               </h3>
               {badge && (
                 <Badge 
                   variant={badge.variant || 'secondary'} 
-                  className='text-xs px-2.5 py-0.5 font-normal bg-gray-100 text-gray-600 border-0 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                  className='text-xs px-3 py-1 font-medium bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 border-0 hover:from-blue-100 hover:to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 dark:text-blue-300 dark:hover:from-blue-800/40 dark:hover:to-indigo-800/40 rounded-full'
                 >
                   {badge.label}
                 </Badge>
               )}
             </div>
             
-            <div className='mb-2'>
-              <span className='text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight'>
+            <div className='mb-3'>
+              <span className='text-4xl font-bold text-gray-900 dark:text-gray-50 tracking-tight leading-none'>
                 {value.toLocaleString()}
               </span>
             </div>
             
             {subtitle && (
-              <p className='text-sm text-gray-500 dark:text-gray-400 leading-relaxed'>
+              <p className='text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium'>
                 {subtitle}
               </p>
             )}
           </div>
           
-          <div className='relative'>
-            <div className='h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-              <div className='text-blue-600 dark:text-blue-400'>
+          <div className='relative ml-4'>
+            <div className='h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-blue-800/30 dark:via-indigo-800/30 dark:to-purple-800/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg shadow-blue-500/20'>
+              <div className='text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300'>
                 {icon}
               </div>
             </div>
-            {/* Subtle glow effect */}
-            <div className='absolute inset-0 rounded-2xl bg-blue-200/20 dark:bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm' />
+            {/* Enhanced glow effect */}
+            <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-300/40 via-indigo-300/30 to-purple-300/40 dark:from-blue-400/20 dark:via-indigo-400/15 dark:to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md' />
           </div>
         </div>
         
         {trend && trend.value !== 0 && (
-          <div className='flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800'>
+          <div className='flex items-center justify-between pt-4 border-t border-gray-200/80 dark:border-gray-700/80'>
             <div className='flex items-center gap-2'>
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
+              <div className={`flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold shadow-sm ${
                 trend.isPositive 
-                  ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400' 
-                  : 'bg-rose-50 text-rose-700 dark:bg-rose-900/20 dark:text-rose-400'
+                  ? 'bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 border border-emerald-200/50 dark:from-emerald-900/30 dark:to-green-900/30 dark:text-emerald-300 dark:border-emerald-700/50' 
+                  : 'bg-gradient-to-r from-rose-100 to-red-100 text-rose-800 border border-rose-200/50 dark:from-rose-900/30 dark:to-red-900/30 dark:text-rose-300 dark:border-rose-700/50'
               }`}>
-                <TrendIcon className='h-3.5 w-3.5' />
+                <TrendIcon className='h-4 w-4' />
                 <span>
                   {trend.isPositive ? '+' : ''}
                   {trend.value}%
@@ -104,7 +104,7 @@ function StatCard({
               </div>
             </div>
             
-            <span className='text-xs text-gray-400 dark:text-gray-500 font-medium'>
+            <span className='text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide'>
               {trend.label || 'vs last month'}
             </span>
           </div>
